@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     73210,       2058]
-NotebookOptionsPosition[     69793,       1992]
-NotebookOutlinePosition[     70147,       2008]
-CellTagsIndexPosition[     70104,       2005]
+NotebookDataLength[     78162,       2195]
+NotebookOptionsPosition[     74101,       2119]
+NotebookOutlinePosition[     74455,       2135]
+CellTagsIndexPosition[     74412,       2132]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1988,6 +1988,133 @@ Cell[BoxData[
  CellChangeTimes->{{3.732622563425569*^9, 
   3.7326225747192307`*^9}},ExpressionUUID->"f446b13d-0a94-4721-a441-\
 9f7f1e9517a3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["a simple example, may be:", "Section",
+ CellChangeTimes->{{3.732716466596937*^9, 
+  3.7327164826297092`*^9}},ExpressionUUID->"c0b8d6db-04ad-4121-b9c6-\
+c7fcdccb11dc"],
+
+Cell["\<\
+a spherical shell with a pressure difference p between inside and outside. \
+what are the stresses and displacements?\
+\>", "Text",
+ CellChangeTimes->{{3.732716493489051*^9, 
+  3.732716542696249*^9}},ExpressionUUID->"802593c3-44a2-4b26-9292-\
+5045763eebbc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", "p", "]"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"moment", " ", "equilibrium"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Chi]s", "=", 
+    RowBox[{"p", " ", 
+     RowBox[{
+      RowBox[{"r", "^", "3"}], "/", "2"}]}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"stresses", " ", "from", " ", "Airy", " ", "stress"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]sij", "=", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i\[Gamma]", "[", 
+           RowBox[{"[", 
+            RowBox[{"j", ",", "m"}], "]"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"[", 
+            RowBox[{"m", ",", "k"}], "]"}], "]"}], 
+          RowBox[{"i\[Gamma]", "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "i"}], "]"}], "]"}], "\[Kappa]g", " ", 
+          "\[Chi]s"}], " ", ",", 
+         RowBox[{"{", 
+          RowBox[{"m", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "2"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "2"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Sigma]\[Theta]\[Theta]", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"\[Sigma]sij", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], "*", 
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]\[Phi]\[Phi]", "=", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{
+     RowBox[{"\[Sigma]sij", "[", 
+      RowBox[{"[", 
+       RowBox[{"2", ",", "2"}], "]"}], "]"}], "*", 
+     RowBox[{"g", "[", 
+      RowBox[{"[", 
+       RowBox[{"2", ",", "2"}], "]"}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"compatibility", " ", "equation"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"u3", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "\[Nu]"}], ")"}], "/", "Y"}], "*", "\[Chi]s", "*", 
+    RowBox[{"r", "^", "3"}], "*", 
+    RowBox[{"\[Kappa]g", "^", "2"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.73271655016296*^9, 3.7327167153403*^9}, {
+  3.7327167829538717`*^9, 3.73271678957502*^9}, {3.732717006158991*^9, 
+  3.7327170139479313`*^9}, {3.732717048926512*^9, 3.73271705971728*^9}, {
+  3.732717175070668*^9, 3.732717234395903*^9}, {3.732717269738351*^9, 
+  3.732717387269929*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"4383f2ba-021b-4bd8-aa71-b2da1d412cfe"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"p", " ", "r"}], "2"]], "Output",
+ CellChangeTimes->{3.732716715992322*^9, 3.732716790231186*^9, 
+  3.732717015629223*^9, 3.732717234956039*^9, 3.732717387739523*^9},
+ CellLabel->"Out[73]=",ExpressionUUID->"1dea15fb-a984-450a-8fe5-32af55fadeca"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"p", " ", "r"}], "2"]], "Output",
+ CellChangeTimes->{3.732716715992322*^9, 3.732716790231186*^9, 
+  3.732717015629223*^9, 3.732717234956039*^9, 3.7327173877492933`*^9},
+ CellLabel->"Out[74]=",ExpressionUUID->"2b95ca05-8c90-4837-84a5-696c9d55b65a"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"p", " ", 
+    SuperscriptBox["r", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "\[Nu]"}], ")"}]}], 
+   RowBox[{"2", " ", "Y"}]]}]], "Output",
+ CellChangeTimes->{3.732716715992322*^9, 3.732716790231186*^9, 
+  3.732717015629223*^9, 3.732717234956039*^9, 3.732717387753442*^9},
+ CellLabel->"Out[75]=",ExpressionUUID->"3c0ab3fa-aef2-4b80-986d-f57357cdb531"]
+}, Open  ]]
 }, Open  ]]
 },
 WindowSize->{808, 755},
@@ -2059,6 +2186,16 @@ Cell[66749, 1891, 1081, 33, 58, "Input",ExpressionUUID->"d599a4a5-701a-4eaa-8f9e
 Cell[67833, 1926, 1196, 38, 54, "Output",ExpressionUUID->"b1c8f0a4-9454-4ee9-aa79-c8f79d4caac0"]
 }, Open  ]],
 Cell[69044, 1967, 733, 22, 35, "Input",ExpressionUUID->"f446b13d-0a94-4721-a441-9f7f1e9517a3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69814, 1994, 172, 3, 67, "Section",ExpressionUUID->"c0b8d6db-04ad-4121-b9c6-c7fcdccb11dc"],
+Cell[69989, 1999, 267, 6, 58, "Text",ExpressionUUID->"802593c3-44a2-4b26-9292-5045763eebbc"],
+Cell[CellGroupData[{
+Cell[70281, 2009, 2776, 79, 220, "Input",ExpressionUUID->"4383f2ba-021b-4bd8-aa71-b2da1d412cfe"],
+Cell[73060, 2090, 283, 5, 48, "Output",ExpressionUUID->"1dea15fb-a984-450a-8fe5-32af55fadeca"],
+Cell[73346, 2097, 285, 5, 48, "Output",ExpressionUUID->"2b95ca05-8c90-4837-84a5-696c9d55b65a"],
+Cell[73634, 2104, 439, 11, 53, "Output",ExpressionUUID->"3c0ab3fa-aef2-4b80-986d-f57357cdb531"]
+}, Open  ]]
 }, Open  ]]
 }
 ]
